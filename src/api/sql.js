@@ -155,9 +155,11 @@
         xhr = resp;
         resp = JSON.parse(resp.response);
       }
-      promise.trigger('done', resp, status, xhr);
-      if(success) success(resp, status, xhr);
-      if(callback) callback(resp);
+      setTimeout(function() {
+        promise.trigger('done', resp, status, xhr);
+        if(success) success(resp, status, xhr);
+       if(callback) callback(resp);
+      }, 0);
     }
 
     // call ajax
